@@ -265,31 +265,135 @@ body {
     }
 }
 
+/* ===== RESPONSIVE PARA TELÉFONOS ===== */
 @media (max-width: 768px) {
+    /* Ajustes del logo */
     .logo-container {
         padding: 10px 15px;
-        gap: 8px;
+        gap: 5px;
     }
     
     .logo-img {
-        height: 70px;
+        height: 50px;
     }
     
     .logo-text {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
     }
     
+    /* Contenedor principal ocupa casi toda la pantalla */
+    .container {
+        width: 95%;
+        max-width: 95%;
+        margin-top: 60px;
+    }
+    
+    /* Cambiar a columna en móvil */
     .main-box {
         flex-direction: column;
+        min-height: auto;
     }
-
-    .info-panel {
+    
+    /* Ajustar paneles */
+    .welcome-panel, .forms-panel {
         width: 100%;
-        position: relative;
-        right: 0;
     }
-
+    
+    .welcome-panel {
+        padding: 30px 20px;
+        min-height: 200px;
+    }
+    
+    .forms-panel {
+        padding: 30px 20px;
+    }
+    
+    /* Panel de info (se desliza verticalmente) */
+    .info-panel {
+        position: relative;
+        width: 100%;
+        right: 0;
+        top: 0;
+    }
+    
+    /* Ajustar efecto slide para móvil */
     .main-box.slide-active .info-panel {
         right: 0;
+        top: 0;
+    }
+    
+    .main-box.slide-active .welcome-panel {
+        display: none;
+    }
+    
+    /* Ajustar contenido de paneles */
+    .panel-content {
+        padding: 20px;
+    }
+    
+    .panel-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .panel-content p {
+        font-size: 0.9rem;
+    }
+    
+    .panel-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Formularios más compactos */
+    .form-container h1 {
+        font-size: 1.6rem;
+    }
+    
+    .subtitulo {
+        font-size: 0.8rem;
+    }
+    
+    .input-group-form input {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .submit-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    /* Mensajes más pequeños */
+    .message {
+        font-size: 0.75rem;
+        padding: 8px;
+    }
+}
+
+/* Para teléfonos muy pequeños (menos de 480px) */
+@media (max-width: 480px) {
+    .logo-img {
+        height: 35px;
+    }
+    
+    .logo-text {
+        font-size: 0.55rem;
+    }
+    
+    .form-container h1 {
+        font-size: 1.4rem;
+    }
+    
+    .panel-content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .forms-panel {
+        padding: 20px 15px;
+    }
+    
+    .input-group-form {
+        margin-bottom: 15px;
     }
 }

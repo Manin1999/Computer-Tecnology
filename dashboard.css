@@ -22,7 +22,6 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -43,7 +42,7 @@ body {
 .dashboard-logo-text {
     color: white;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 1px;
 }
 
@@ -76,7 +75,7 @@ body {
 .welcome-card {
     background: white;
     border-radius: 20px;
-    padding: 50px;
+    padding: 40px;
     max-width: 600px;
     width: 100%;
     text-align: center;
@@ -85,7 +84,7 @@ body {
 }
 
 .welcome-card h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #0A192F;
     margin-bottom: 15px;
 }
@@ -93,7 +92,7 @@ body {
 .welcome-card p {
     color: #4a5568;
     margin-bottom: 30px;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .user-info {
@@ -111,13 +110,13 @@ body {
 .info-card h3 {
     color: #0A2B4E;
     margin-bottom: 20px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
 }
 
 .info-card p {
     margin: 12px 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #2d3748;
 }
 
@@ -136,9 +135,10 @@ body {
     }
 }
 
+/* ===== RESPONSIVE PARA TELÉFONOS ===== */
 @media (max-width: 768px) {
     .top-bar {
-        padding: 10px 15px;
+        padding: 12px 15px;
     }
     
     .dashboard-logo {
@@ -146,7 +146,7 @@ body {
     }
     
     .dashboard-logo-text {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
     
     .logout-btn {
@@ -154,11 +154,61 @@ body {
         font-size: 0.8rem;
     }
     
+    .main-content {
+        padding: 20px;
+        min-height: calc(100vh - 60px);
+    }
+    
     .welcome-card {
-        padding: 30px 20px;
+        padding: 25px 20px;
     }
     
     .welcome-card h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+    }
+    
+    .welcome-card p {
+        font-size: 0.85rem;
+    }
+    
+    .info-card {
+        padding: 15px;
+    }
+    
+    .info-card h3 {
+        font-size: 1rem;
+    }
+    
+    .info-card p {
+        font-size: 0.85rem;
+        margin: 8px 0;
+    }
+}
+
+/* Para teléfonos muy pequeños */
+@media (max-width: 480px) {
+    .dashboard-logo {
+        height: 28px;
+    }
+    
+    .dashboard-logo-text {
+        font-size: 0.55rem;
+    }
+    
+    .logout-btn {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .welcome-card h1 {
+        font-size: 1.2rem;
+    }
+    
+    .welcome-card {
+        padding: 20px 15px;
+    }
+    
+    .info-card p {
+        font-size: 0.75rem;
     }
 }
