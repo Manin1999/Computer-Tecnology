@@ -50,6 +50,15 @@ function showMessage(elementId, message, isError = true) {
     }
 }
 
+// ========== REDIRIGIR A PÁGINA CENTRAL (DASHBOARD) ==========
+function redirectToDashboard(user) {
+    // Guardar el usuario en localStorage para usarlo en la página central
+    localStorage.setItem('current_user', JSON.stringify(user));
+    
+    // Redirigir a la página central
+    window.location.href = 'dashboard.html';
+}
+
 // ========== REGISTRO ==========
 registerBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -96,7 +105,7 @@ registerBtn.addEventListener('click', (e) => {
     }, 1500);
 });
 
-// ========== INICIO DE SESIÓN ==========
+// ========== INICIO DE SESIÓN CON REDIRECCIÓN ==========
 loginBtn.addEventListener('click', (e) => {
     e.preventDefault();
     
@@ -114,20 +123,16 @@ loginBtn.addEventListener('click', (e) => {
     const user = users.find(u => u.email === email && u.password === password);
     
     if (user) {
-        showMessage('loginMessage', `✅ ¡Bienvenido ${user.nombre}! Inicio de sesión exitoso`, false);
+        showMessage('loginMessage', `✅ ¡Bienvenido ${user.nombre}! Redirigiendo...`, false);
         
-        // Guardar sesión actual
-        localStorage.setItem('current_user', JSON.stringify({
-            id: user.id,
-            nombre: user.nombre,
-            email: user.email
-        }));
-        
-        // Limpiar campos
-        if (loginEmail) loginEmail.value = '';
-        if (loginPassword) loginPassword.value = '';
-        
-        console.log('Usuario logueado:', user);
+        // Redirigir a la página central después de 1 segundo
+        setTimeout(() => {
+            redirectToDashboard({
+                id: user.id,
+                nombre: user.nombre,
+                email: user.email
+            });
+        }, 1000);
     } else {
         showMessage('loginMessage', '❌ Correo o contraseña incorrectos', true);
     }
