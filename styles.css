@@ -35,6 +35,7 @@ body {
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .main-container {
     max-width: 450px;
+    width: 100%;
     margin: 0 auto;
     background: white;
     border-radius: 20px;
@@ -176,7 +177,7 @@ body {
     }
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== SOLO AJUSTES DE ESPACIADO PARA PANTALLAS MUY PEQUEÑAS ===== */
 @media (max-width: 480px) {
     body {
         padding: 15px;
