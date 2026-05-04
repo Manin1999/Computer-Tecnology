@@ -2,86 +2,74 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Technology - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Computer Technology - Acceso</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Logo con imagen más grande -->
-    <div class="logo-container">
-        <img src="gta22.png" alt="Computer Technology Logo" class="logo-img">
-        <span class="logo-text">COMPUTER TECHNOLOGY</span>
+    <!-- Logo superior -->
+    <div class="top-logo">
+        <img src="gta22.png" alt="Logo Computer Technology" class="top-logo-img">
+        <h1 class="top-logo-text">COMPUTER TECHNOLOGY</h1>
     </div>
 
-    <div class="container">
-        <div class="main-box">
-            <!-- Panel derecho (Información adicional) -->
-            <div class="panel welcome-panel">
-                <div class="panel-content">
-                    <h2>¡Bienvenido a Computer Technology!</h2>
-                    <p>Ingrese sus datos personales para ingresar en Computer Technology</p>
-                    <button id="btnRegistroPanel" class="panel-btn">Registrarse</button>
-                </div>
-            </div>
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        
+        <!-- Pestañas de navegación -->
+        <div class="tabs">
+            <button class="tab-btn active" id="tabLoginBtn">Iniciar Sesión</button>
+            <button class="tab-btn" id="tabRegisterBtn">Registrarse</button>
+        </div>
 
-            <!-- Panel izquierdo (Formularios) -->
-            <div class="panel forms-panel">
-                <!-- Formulario de Inicio de Sesión -->
-                <div class="form-container login-form" id="loginForm">
-                    <h1>Iniciar sesión</h1>
-                    <p class="subtitulo">Use su correo y contraseña</p>
-                    
-                    <div class="input-group-form">
-                        <label>Email</label>
-                        <input type="email" id="loginEmail" placeholder="correo@ejemplo.com">
-                    </div>
-                    
-                    <div class="input-group-form">
-                        <label>Password</label>
-                        <input type="password" id="loginPassword" placeholder="••••••••">
-                    </div>
-                    
-                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
-                    
-                    <button class="submit-btn" id="btnLogin">INICIAR SESIÓN</button>
-                    <div id="loginMessage"></div>
+        <!-- Formulario de Inicio de Sesión -->
+        <div class="form-wrapper active" id="loginWrapper">
+            <form id="loginForm">
+                <h2>Bienvenido</h2>
+                <p class="form-subtitle">Ingresa sus datos personales para ingresar en Computer Technology</p>
+                
+                <div class="input-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="loginEmail" placeholder="ejemplo@gmail.com" required>
                 </div>
+                
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="loginSubmit">INGRESAR</button>
+                <div id="loginMessage" class="message-area"></div>
+            </form>
+        </div>
 
-                <!-- Formulario de Registro -->
-                <div class="form-container register-form" id="registerForm">
-                    <h1>Registrarse</h1>
-                    <p class="subtitulo">Regístrese con sus datos personales para tener acceso a todos los servicios de Computer Technology</p>
-                    
-                    <div class="input-group-form">
-                        <label>Nombre</label>
-                        <input type="text" id="regNombre" placeholder="Tu nombre">
-                    </div>
-                    
-                    <div class="input-group-form">
-                        <label>Email</label>
-                        <input type="email" id="regEmail" placeholder="correo@ejemplo.com">
-                    </div>
-                    
-                    <div class="input-group-form">
-                        <label>Password</label>
-                        <input type="password" id="regPassword" placeholder="••••••••">
-                    </div>
-                    
-                    <button class="submit-btn" id="btnRegister">REGISTRARSE</button>
-                    <div id="registerMessage"></div>
+        <!-- Formulario de Registro -->
+        <div class="form-wrapper" id="registerWrapper">
+            <form id="registerForm">
+                <h2>Crear cuenta</h2>
+                <p class="form-subtitle">use su correo electronico para registrarse en la mejor tienda de tecnologia a nivel mundial</p>
+                
+                <div class="input-group">
+                    <label>Nombre completo</label>
+                    <input type="text" id="regNombre" placeholder="Tu nombre" required>
                 </div>
-            </div>
-
-            <!-- Panel de información (se desliza) -->
-            <div class="panel info-panel">
-                <div class="panel-content">
-                    <h2>¡Hola, Amigo!</h2>
-                    <p>Use su correo electrónico para registrarse en la mejor tienda de tecnologia a nivel mundial.</p>
-                    <button id="btnLoginPanel" class="panel-btn">Iniciar Sesión</button>
+                
+                <div class="input-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="regEmail" placeholder="ejemplo@gmail.com" required>
                 </div>
-            </div>
+                
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="regPassword" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="registerSubmit">REGISTRARSE</button>
+                <div id="registerMessage" class="message-area"></div>
+            </form>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
