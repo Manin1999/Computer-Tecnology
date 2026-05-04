@@ -265,28 +265,28 @@ body {
     }
 }
 
-/* ===== RESPONSIVE PARA TELÉFONOS ===== */
+/* ===== RESPONSIVE PARA MÓVILES ===== */
 @media (max-width: 768px) {
-    /* Ajustes del logo */
+    /* Logo más pequeño */
     .logo-container {
-        padding: 10px 15px;
+        padding: 8px 12px;
         gap: 5px;
     }
     
     .logo-img {
-        height: 50px;
+        height: 40px;
     }
     
     .logo-text {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         letter-spacing: 1px;
     }
     
-    /* Contenedor principal ocupa casi toda la pantalla */
+    /* Contenedor más ancho en móvil */
     .container {
         width: 95%;
         max-width: 95%;
-        margin-top: 60px;
+        margin-top: 50px;
     }
     
     /* Cambiar a columna en móvil */
@@ -295,68 +295,78 @@ body {
         min-height: auto;
     }
     
-    /* Ajustar paneles */
-    .welcome-panel, .forms-panel {
-        width: 100%;
-    }
-    
+    /* Ajustar altura de paneles */
     .welcome-panel {
-        padding: 30px 20px;
-        min-height: 200px;
+        min-height: 180px;
+        order: 1;
     }
     
     .forms-panel {
+        order: 2;
         padding: 30px 20px;
     }
     
-    /* Panel de info (se desliza verticalmente) */
     .info-panel {
         position: relative;
         width: 100%;
         right: 0;
-        top: 0;
+        order: 1;
     }
     
-    /* Ajustar efecto slide para móvil */
+    /* Ajuste del efecto slide en móvil */
     .main-box.slide-active .info-panel {
         right: 0;
-        top: 0;
     }
     
     .main-box.slide-active .welcome-panel {
         display: none;
     }
     
-    /* Ajustar contenido de paneles */
+    /* Contenido de paneles más compacto */
     .panel-content {
-        padding: 20px;
+        padding: 25px 20px;
     }
     
     .panel-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .panel-content p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        margin-bottom: 20px;
     }
     
     .panel-btn {
         padding: 8px 20px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     
     /* Formularios más compactos */
     .form-container h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     
     .subtitulo {
+        font-size: 0.75rem;
+        margin-bottom: 20px;
+    }
+    
+    .input-group-form {
+        margin-bottom: 15px;
+    }
+    
+    .input-group-form label {
         font-size: 0.8rem;
     }
     
     .input-group-form input {
         padding: 10px 12px;
         font-size: 0.9rem;
+    }
+    
+    .forgot-link {
+        font-size: 0.7rem;
+        margin-bottom: 20px;
     }
     
     .submit-btn {
@@ -366,15 +376,16 @@ body {
     
     /* Mensajes más pequeños */
     .message {
-        font-size: 0.75rem;
-        padding: 8px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        margin-top: 12px;
     }
 }
 
-/* Para teléfonos muy pequeños (menos de 480px) */
+/* Para móviles muy pequeños (menos de 480px) */
 @media (max-width: 480px) {
     .logo-img {
-        height: 35px;
+        height: 30px;
     }
     
     .logo-text {
@@ -382,18 +393,24 @@ body {
     }
     
     .form-container h1 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
     
     .panel-content h2 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .forms-panel {
         padding: 20px 15px;
     }
     
-    .input-group-form {
-        margin-bottom: 15px;
+    .input-group-form input {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .submit-btn {
+        padding: 8px;
+        font-size: 0.85rem;
     }
 }
