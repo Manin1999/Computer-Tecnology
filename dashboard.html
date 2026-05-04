@@ -2,107 +2,89 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Computer Technology</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0A192F, #1A3A5F);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .dashboard-card {
-            background: white;
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            animation: fadeIn 0.6s ease;
-        }
-        h1 {
-            color: #0A192F;
-            margin-bottom: 20px;
-        }
-        .user-info {
-            background: #f7fafc;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        .user-info p {
-            margin: 10px 0;
-            color: #2d3748;
-            font-size: 1rem;
-        }
-        .user-info strong {
-            color: #0A2B4E;
-        }
-        .logout-btn {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 40px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-        .logout-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(220,53,69,0.4);
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Computer Technology - Inicio</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="dashboard-card">
-        <h1 id="welcomeTitle">Bienvenido</h1>
-        <div class="user-info" id="userInfo">
-            <p><strong>Nombre:</strong> <span id="userNombre">---</span></p>
-            <p><strong>Email:</strong> <span id="userEmail">---</span></p>
-            <p><strong>ID:</strong> <span id="userId">---</span></p>
+    <!-- Header estilo Mercado Libre -->
+    <header class="ml-header">
+        <div class="header-top">
+            <div class="logo-area">
+                <img src="gta22.png" alt="Logo" class="header-logo">
+                <span class="logo-text">Computer <span class="tech">Technology</span></span>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar productos, marcas y más..." class="search-input">
+                <button id="searchBtn" class="search-btn">🔍</button>
+            </div>
+            <div class="cart-icon" id="cartIcon">
+                🛒
+                <span id="cartCount" class="cart-badge">0</span>
+            </div>
         </div>
-        <button class="logout-btn" id="logoutBtn">Cerrar Sesión</button>
+        <div class="header-bottom">
+            <div class="categories" id="categories">
+                <span class="category active" data-cat="all">Todos</span>
+                <span class="category" data-cat="laptops">💻 Laptops</span>
+                <span class="category" data-cat="perifericos">🎮 Periféricos</span>
+                <span class="category" data-cat="monitores">🖥️ Monitores</span>
+                <span class="category" data-cat="almacenamiento">💾 Almacenamiento</span>
+                <span class="category" data-cat="audio">🎧 Audio</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Usuario bienvenida -->
+    <div class="user-greeting">
+        <div class="greeting-content">
+            <span class="greeting-icon">👋</span>
+            <span id="welcomeText" class="greeting-text"></span>
+        </div>
     </div>
-    <script>
-        const currentUser = JSON.parse(localStorage.getItem('current_user'));
-        
-        console.log('Dashboard cargado, usuario:', currentUser);
-        
-        if (!currentUser) {
-            console.log('No hay usuario, redirigiendo a login');
-            window.location.href = 'index.html';
-        } else {
-            document.getElementById('userNombre').textContent = currentUser.nombre;
-            document.getElementById('userEmail').textContent = currentUser.email;
-            document.getElementById('userId').textContent = currentUser.id;
-            document.getElementById('welcomeTitle').textContent = `¡Hola, ${currentUser.nombre}!`;
-        }
-        
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            localStorage.removeItem('current_user');
-            window.location.href = 'index.html';
-        });
-    </script>
+
+    <!-- Productos -->
+    <main class="ml-main">
+        <div class="products-grid" id="productsGrid">
+            <!-- Productos cargados con JS -->
+        </div>
+    </main>
+
+    <!-- Carrito lateral (slide) -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Mi Carrito</h3>
+            <button class="close-cart" id="closeCartBtn">✕</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart-message">
+                <span class="empty-icon">🛒</span>
+                <p>Tu carrito está vacío</p>
+                <small>¡Agrega productos para continuar!</small>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <strong id="cartTotal">$0</strong>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Comprar ahora</button>
+        </div>
+    </div>
+
+    <!-- Overlay para el carrito -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Modal de compra exitosa -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">✅</div>
+            <h2>¡Compra realizada con éxito!</h2>
+            <p>Tu pedido está siendo procesado. Recibirás un correo con los detalles.</p>
+            <button class="continue-btn" id="continueBtn">Seguir comprando</button>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>

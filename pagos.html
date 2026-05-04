@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Computer Technology - Métodos de Pago</title>
+    <link rel="stylesheet" href="pagos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="payment-header">
+        <div class="logo-area">
+            <img src="gta22.png" alt="Logo" class="header-logo">
+            <span class="logo-text">Computer <span class="tech">Technology</span></span>
+        </div>
+        <div class="order-summary-btn" id="viewOrderBtn">
+            📋 Ver Pedido
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="payment-container">
+        <h1>Completa tu compra</h1>
+        <p class="payment-subtitle">Selecciona método de envío y forma de pago</p>
+
+        <!-- Sección de Envío -->
+        <div class="shipping-section">
+            <h2>🚚 Método de Envío</h2>
+            <div class="shipping-options">
+                <!-- Delivery Nacional (Venezuela) -->
+                <div class="shipping-card" data-shipping="delivery">
+                    <div class="shipping-icon">🚗</div>
+                    <div class="shipping-info">
+                        <h3>Delivery Nacional (Venezuela)</h3>
+                        <p>Envío a domicilio en Caracas y principales ciudades</p>
+                        <span class="shipping-price">$5.00</span>
+                        <small>Entrega 1-3 días hábiles</small>
+                    </div>
+                    <div class="shipping-select">→</div>
+                </div>
+
+                <!-- MRW Venezuela -->
+                <div class="shipping-card" data-shipping="mrw">
+                    <div class="shipping-icon">📦</div>
+                    <div class="shipping-info">
+                        <h3>MRW Venezuela</h3>
+                        <p>Envío a cualquier estado del país</p>
+                        <span class="shipping-price">$8.00</span>
+                        <small>Entrega 2-5 días hábiles | Número de guía</small>
+                    </div>
+                    <div class="shipping-select">→</div>
+                </div>
+
+                <!-- Envío Internacional -->
+                <div class="shipping-card" data-shipping="internacional">
+                    <div class="shipping-icon">✈️</div>
+                    <div class="shipping-info">
+                        <h3>Envío Internacional</h3>
+                        <p>Envíos a Estados Unidos, Europa, Latinoamérica y más</p>
+                        <span class="shipping-price">$25.00 - $50.00</span>
+                        <small>Entrega 7-15 días hábiles | Seguimiento incluido</small>
+                    </div>
+                    <div class="shipping-select">→</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Métodos de Pago -->
+        <div class="payment-section">
+            <h2>💳 Método de Pago</h2>
+            <div class="payment-methods">
+                
+                <!-- Transferencia Banco de Venezuela -->
+                <div class="payment-card" data-method="bancovenezuela">
+                    <div class="payment-icon">🏦</div>
+                    <div class="payment-info">
+                        <h3>Transferencia Banco de Venezuela</h3>
+                        <p>Paga desde tu cuenta del BDV</p>
+                    </div>
+                    <div class="payment-select">→</div>
+                </div>
+
+                <!-- Pago Móvil -->
+                <div class="payment-card" data-method="pagomovil">
+                    <div class="payment-icon">📱</div>
+                    <div class="payment-info">
+                        <h3>Pago Móvil</h3>
+                        <p>Paga desde cualquier banco de Venezuela</p>
+                    </div>
+                    <div class="payment-select">→</div>
+                </div>
+
+                <!-- Binance -->
+                <div class="payment-card" data-method="binance">
+                    <div class="payment-icon">🪙</div>
+                    <div class="payment-info">
+                        <h3>Binance</h3>
+                        <p>Paga con USDT, Bitcoin o criptomonedas</p>
+                    </div>
+                    <div class="payment-select">→</div>
+                </div>
+
+                <!-- PayPal -->
+                <div class="payment-card" data-method="paypal">
+                    <div class="payment-icon">💰</div>
+                    <div class="payment-info">
+                        <h3>PayPal</h3>
+                        <p>Paga con tu cuenta PayPal</p>
+                    </div>
+                    <div class="payment-select">→</div>
+                </div>
+
+                <!-- Tarjeta de Débito -->
+                <div class="payment-card" data-method="debito">
+                    <div class="payment-icon">💳</div>
+                    <div class="payment-info">
+                        <h3>Tarjeta de Débito</h3>
+                        <p>Visa, Mastercard, Maestro</p>
+                    </div>
+                    <div class="payment-select">→</div>
+                </div>
+
+                <!-- Tarjeta de Crédito -->
+                <div class="payment-card" data-method="credito">
+                    <div class="payment-icon">💎</div>
+                    <div class="payment-info">
+                        <h3>Tarjeta de Crédito</h3>
+                        <p>Visa, Mastercard, American Express</p>
+                    </div>
+                    <div class="payment-select">→</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumen del pedido (sidebar) -->
+        <div id="orderSidebar" class="order-sidebar">
+            <div class="order-header">
+                <h3>Resumen del Pedido</h3>
+                <button class="close-order" id="closeOrderBtn">✕</button>
+            </div>
+            <div class="order-body" id="orderBody">
+                <!-- Productos del carrito se cargarán aquí -->
+            </div>
+            <div class="order-footer">
+                <div class="order-subtotal">
+                    <span>Subtotal:</span>
+                    <strong id="orderSubtotal">$0</strong>
+                </div>
+                <div class="order-shipping-cost" id="shippingCostRow" style="display: none;">
+                    <span>Envío:</span>
+                    <strong id="shippingCost">$0</strong>
+                </div>
+                <div class="order-total">
+                    <span>Total:</span>
+                    <strong id="orderTotal">$0</strong>
+                </div>
+                <div class="selected-shipping" id="selectedShippingInfo"></div>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay" class="overlay"></div>
+    </div>
+
+    <!-- Modal de detalles de pago -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-details-modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Detalles de pago</h2>
+                <button class="modal-close" id="closePaymentModal">&times;</button>
+            </div>
+            <div class="modal-body" id="paymentDetailsBody">
+                <!-- Contenido dinámico según método -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="success-icon" id="confirmIcon">✅</div>
+            <h2 id="confirmTitle">¡Compra Realizada!</h2>
+            <p id="confirmMessage">Tu pedido ha sido procesado exitosamente. Recibirás un correo con los detalles de envío y seguimiento.</p>
+            <div id="shippingDetails" class="shipping-details" style="display: none;"></div>
+            <button class="continue-shopping" id="continueShoppingBtn">Volver a la tienda</button>
+        </div>
+    </div>
+
+    <script src="pagos.js"></script>
+</body>
+</html>
