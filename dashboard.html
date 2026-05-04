@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Technology - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Barra superior -->
+        <div class="top-bar">
+            <div class="logo-area">
+                <img src="gta22.png" alt="Logo" class="dashboard-logo">
+                <span class="dashboard-logo-text">COMPUTER TECHNOLOGY</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <div class="welcome-card">
+                <h1 id="welcomeTitle">Bienvenido</h1>
+                <p id="welcomeMessage">Has iniciado sesión exitosamente</p>
+                <div class="user-info">
+                    <div class="info-card">
+                        <h3>Información del Usuario</h3>
+                        <p><strong>Nombre:</strong> <span id="userNombre"></span></p>
+                        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                        <p><strong>ID:</strong> <span id="userId"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
