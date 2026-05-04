@@ -295,31 +295,70 @@ body {
         min-height: auto;
     }
     
-    /* Ajustar altura de paneles */
+    /* Ocultar el panel de bienvenida por defecto en móvil */
     .welcome-panel {
-        min-height: 180px;
-        order: 1;
+        display: none;
     }
     
-    .forms-panel {
-        order: 2;
-        padding: 30px 20px;
-    }
-    
+    /* El panel info se convierte en botón flotante o se oculta */
     .info-panel {
         position: relative;
         width: 100%;
         right: 0;
         order: 1;
+        display: none; /* Oculto por defecto en móvil */
     }
     
-    /* Ajuste del efecto slide en móvil */
+    /* El forms-panel ocupa todo el ancho */
+    .forms-panel {
+        order: 2;
+        padding: 30px 20px;
+        width: 100%;
+    }
+    
+    /* Botón para cambiar entre login y registro en móvil */
+    .mobile-toggle {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .mobile-toggle-btn {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #4a5568;
+        cursor: pointer;
+        padding: 8px 20px;
+        border-radius: 30px;
+        transition: 0.3s;
+    }
+    
+    .mobile-toggle-btn.active {
+        background: linear-gradient(135deg, #0A2B4E, #1A3A5F);
+        color: white;
+    }
+    
+    /* Ocultar el efecto slide tradicional en móvil */
     .main-box.slide-active .info-panel {
         right: 0;
     }
     
     .main-box.slide-active .welcome-panel {
         display: none;
+    }
+    
+    /* En móvil, solo mostramos el formulario activo */
+    .main-box.slide-active .forms-panel .login-form {
+        display: none;
+    }
+    
+    .main-box.slide-active .forms-panel .register-form {
+        display: block;
     }
     
     /* Contenido de paneles más compacto */
@@ -396,10 +435,6 @@ body {
         font-size: 1.3rem;
     }
     
-    .panel-content h2 {
-        font-size: 1.1rem;
-    }
-    
     .forms-panel {
         padding: 20px 15px;
     }
@@ -412,5 +447,10 @@ body {
     .submit-btn {
         padding: 8px;
         font-size: 0.85rem;
+    }
+    
+    .mobile-toggle-btn {
+        font-size: 0.9rem;
+        padding: 6px 15px;
     }
 }
