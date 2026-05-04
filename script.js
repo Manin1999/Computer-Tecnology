@@ -1,6 +1,6 @@
 const mainBox = document.querySelector('.main-box');
 const btnRegistro = document.getElementById('btnRegistroPanel');
-const btnLogin = document.getElementById('btnLoginPanel');
+const btnLoginPanel = document.getElementById('btnLoginPanel');
 const loginBtn = document.getElementById('btnLogin');
 const registerBtn = document.getElementById('btnRegister');
 
@@ -25,6 +25,7 @@ if (!localStorage.getItem(DB_USERS)) {
         }
     ];
     localStorage.setItem(DB_USERS, JSON.stringify(users));
+    console.log('✅ Usuario demo creado');
 }
 
 // Funciones de la "base de datos" local
@@ -41,126 +42,127 @@ function showMessage(elementId, message, isError = true) {
     const msgDiv = document.getElementById(elementId);
     if (msgDiv) {
         msgDiv.textContent = message;
-        msgDiv.className = `message ${isError ? 'error' : 'success'}`;
+        msgDiv.className = isError ? 'error' : 'success';
         
         setTimeout(() => {
             msgDiv.textContent = '';
-            msgDiv.className = 'message';
+            msgDiv.className = '';
         }, 3000);
     }
 }
 
-// ========== REDIRIGIR A PÁGINA CENTRAL (DASHBOARD) ==========
+// ========== REDIRIGIR A PÁGINA CENTRAL ==========
 function redirectToDashboard(user) {
-    // Guardar el usuario en localStorage para usarlo en la página central
+    console.log('🔵 Redirigiendo a dashboard con usuario:', user);
     localStorage.setItem('current_user', JSON.stringify(user));
-    
-    // Redirigir a la página central
     window.location.href = 'dashboard.html';
 }
 
 // ========== REGISTRO ==========
-registerBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    const nombre = regNombre ? regNombre.value.trim() : '';
-    const email = regEmail ? regEmail.value.trim() : '';
-    const password = regPassword ? regPassword.value : '';
-
-    if (!nombre || !email || !password) {
-        showMessage('registerMessage', '⚠️ Todos los campos son obligatorios', true);
-        return;
-    }
-
-    const users = getUsers();
-    
-    // Verificar si el email ya existe
-    const userExists = users.some(user => user.email === email);
-    if (userExists) {
-        showMessage('registerMessage', '❌ El correo electrónico ya está registrado', true);
-        return;
-    }
-
-    // Crear nuevo usuario
-    const newUser = {
-        id: users.length + 1,
-        nombre: nombre,
-        email: email,
-        password: password
-    };
-    
-    users.push(newUser);
-    saveUsers(users);
-    
-    showMessage('registerMessage', '✅ ¡Registro exitoso! Ahora inicia sesión', false);
-    
-    // Limpiar campos
-    if (regNombre) regNombre.value = '';
-    if (regEmail) regEmail.value = '';
-    if (regPassword) regPassword.value = '';
-    
-    // Cambiar a login después de 1.5 segundos
-    setTimeout(() => {
-        showLogin();
-    }, 1500);
-});
-
-// ========== INICIO DE SESIÓN CON REDIRECCIÓN ==========
-loginBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    const email = loginEmail ? loginEmail.value.trim() : '';
-    const password = loginPassword ? loginPassword.value : '';
-
-    if (!email || !password) {
-        showMessage('loginMessage', '⚠️ Correo y contraseña son obligatorios', true);
-        return;
-    }
-
-    const users = getUsers();
-    
-    // Buscar usuario
-    const user = users.find(u => u.email === email && u.password === password);
-    
-    if (user) {
-        showMessage('loginMessage', `✅ ¡Bienvenido ${user.nombre}! Redirigiendo...`, false);
+if (registerBtn) {
+    registerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('🟢 Registro clickeado');
         
-        // Redirigir a la página central después de 1 segundo
+        const nombre = regNombre ? regNombre.value.trim() : '';
+        const email = regEmail ? regEmail.value.trim() : '';
+        const password = regPassword ? regPassword.value : '';
+
+        if (!nombre || !email || !password) {
+            showMessage('registerMessage', '⚠️ Todos los campos son obligatorios', true);
+            return;
+        }
+
+        const users = getUsers();
+        
+        const userExists = users.some(user => user.email === email);
+        if (userExists) {
+            showMessage('registerMessage', '❌ El correo electrónico ya está registrado', true);
+            return;
+        }
+
+        const newUser = {
+            id: users.length + 1,
+            nombre: nombre,
+            email: email,
+            password: password
+        };
+        
+        users.push(newUser);
+        saveUsers(users);
+        
+        showMessage('registerMessage', '✅ ¡Registro exitoso! Ahora inicia sesión', false);
+        
+        if (regNombre) regNombre.value = '';
+        if (regEmail) regEmail.value = '';
+        if (regPassword) regPassword.value = '';
+        
         setTimeout(() => {
-            redirectToDashboard({
-                id: user.id,
-                nombre: user.nombre,
-                email: user.email
-            });
-        }, 1000);
-    } else {
-        showMessage('loginMessage', '❌ Correo o contraseña incorrectos', true);
-    }
-});
+            showLogin();
+        }, 1500);
+    });
+}
+
+// ========== INICIO DE SESIÓN ==========
+if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('🔵 Login clickeado');
+        
+        const email = loginEmail ? loginEmail.value.trim() : '';
+        const password = loginPassword ? loginPassword.value : '';
+
+        if (!email || !password) {
+            showMessage('loginMessage', '⚠️ Correo y contraseña son obligatorios', true);
+            return;
+        }
+
+        const users = getUsers();
+        console.log('📋 Usuarios en BD:', users);
+        
+        const user = users.find(u => u.email === email && u.password === password);
+        
+        if (user) {
+            console.log('✅ Usuario encontrado:', user);
+            showMessage('loginMessage', `✅ ¡Bienvenido ${user.nombre}! Redirigiendo...`, false);
+            
+            setTimeout(() => {
+                redirectToDashboard({
+                    id: user.id,
+                    nombre: user.nombre,
+                    email: user.email
+                });
+            }, 1000);
+        } else {
+            console.log('❌ Usuario no encontrado');
+            showMessage('loginMessage', '❌ Correo o contraseña incorrectos', true);
+        }
+    });
+}
 
 // ========== EFECTO SLIDE ==========
 function showRegister() {
-    mainBox.classList.add('slide-active');
+    if (mainBox) mainBox.classList.add('slide-active');
 }
 
 function showLogin() {
-    mainBox.classList.remove('slide-active');
+    if (mainBox) mainBox.classList.remove('slide-active');
 }
 
 if (btnRegistro) btnRegistro.addEventListener('click', showRegister);
-if (btnLogin) btnLogin.addEventListener('click', showLogin);
+if (btnLoginPanel) btnLoginPanel.addEventListener('click', showLogin);
 
-// Permitir enviar con Enter
+// Enter para enviar
 if (loginPassword) {
     loginPassword.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') loginBtn.click();
+        if (e.key === 'Enter' && loginBtn) loginBtn.click();
     });
 }
 if (regPassword) {
     regPassword.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') registerBtn.click();
+        if (e.key === 'Enter' && registerBtn) registerBtn.click();
     });
 }
 
-// Mostrar estado actual en consola
-console.log('Base de datos offline inicializada con:', getUsers());
+console.log('🚀 Script cargado correctamente');
+console.log('📊 Usuarios en BD:', getUsers());

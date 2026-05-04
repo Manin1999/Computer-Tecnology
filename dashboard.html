@@ -3,36 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Technology - Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard - Computer Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0A192F, #1A3A5F);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: fadeIn 0.6s ease;
+        }
+        h1 {
+            color: #0A192F;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .user-info p {
+            margin: 10px 0;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+        .user-info strong {
+            color: #0A2B4E;
+        }
+        .logout-btn {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(220,53,69,0.4);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Barra superior -->
-        <div class="top-bar">
-            <div class="logo-area">
-                <img src="gta22.png" alt="Logo" class="dashboard-logo">
-                <span class="dashboard-logo-text">COMPUTER TECHNOLOGY</span>
-            </div>
-            <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+    <div class="dashboard-card">
+        <h1 id="welcomeTitle">Bienvenido</h1>
+        <div class="user-info" id="userInfo">
+            <p><strong>Nombre:</strong> <span id="userNombre">---</span></p>
+            <p><strong>Email:</strong> <span id="userEmail">---</span></p>
+            <p><strong>ID:</strong> <span id="userId">---</span></p>
         </div>
-
-        <!-- Contenido principal -->
-        <div class="main-content">
-            <div class="welcome-card">
-                <h1 id="welcomeTitle">Bienvenido</h1>
-                <p id="welcomeMessage">Has iniciado sesión exitosamente</p>
-                <div class="user-info">
-                    <div class="info-card">
-                        <h3>Información del Usuario</h3>
-                        <p><strong>Nombre:</strong> <span id="userNombre"></span></p>
-                        <p><strong>Email:</strong> <span id="userEmail"></span></p>
-                        <p><strong>ID:</strong> <span id="userId"></span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <button class="logout-btn" id="logoutBtn">Cerrar Sesión</button>
     </div>
-    <script src="dashboard.js"></script>
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('current_user'));
+        
+        console.log('Dashboard cargado, usuario:', currentUser);
+        
+        if (!currentUser) {
+            console.log('No hay usuario, redirigiendo a login');
+            window.location.href = 'index.html';
+        } else {
+            document.getElementById('userNombre').textContent = currentUser.nombre;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            document.getElementById('userId').textContent = currentUser.id;
+            document.getElementById('welcomeTitle').textContent = `¡Hola, ${currentUser.nombre}!`;
+        }
+        
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('current_user');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
