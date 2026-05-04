@@ -2,127 +2,86 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Technology - Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Logo -->
+    <!-- Logo con imagen más grande -->
     <div class="logo-container">
         <img src="gta22.png" alt="Computer Technology Logo" class="logo-img">
         <span class="logo-text">COMPUTER TECHNOLOGY</span>
     </div>
 
-    <!-- Versión para escritorio (con efecto slide) -->
-    <div class="desktop-version">
-        <div class="container">
-            <div class="main-box">
-                <div class="panel welcome-panel">
-                    <div class="panel-content">
-                        <h2>¡Bienvenido a Computer Technology!</h2>
-                        <p>Ingrese sus datos personales para ingresar en Computer Technology</p>
-                        <button id="btnRegistroPanel" class="panel-btn">Registrarse</button>
+    <div class="container">
+        <div class="main-box">
+            <!-- Panel derecho (Información adicional) -->
+            <div class="panel welcome-panel">
+                <div class="panel-content">
+                    <h2>¡Bienvenido a Computer Technology!</h2>
+                    <p>Ingrese sus datos personales para ingresar en Computer Technology</p>
+                    <button id="btnRegistroPanel" class="panel-btn">Registrarse</button>
+                </div>
+            </div>
+
+            <!-- Panel izquierdo (Formularios) -->
+            <div class="panel forms-panel">
+                <!-- Formulario de Inicio de Sesión -->
+                <div class="form-container login-form" id="loginForm">
+                    <h1>Iniciar sesión</h1>
+                    <p class="subtitulo">Use su correo y contraseña</p>
+                    
+                    <div class="input-group-form">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" placeholder="correo@ejemplo.com">
                     </div>
+                    
+                    <div class="input-group-form">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••">
+                    </div>
+                    
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                    
+                    <button class="submit-btn" id="btnLogin">INICIAR SESIÓN</button>
+                    <div id="loginMessage" class="message"></div>
                 </div>
 
-                <div class="panel forms-panel">
-                    <div class="form-container login-form" id="loginForm">
-                        <h1>Iniciar sesión</h1>
-                        <p class="subtitulo">Use su correo y contraseña</p>
-                        
-                        <div class="input-group-form">
-                            <label>Email</label>
-                            <input type="email" id="loginEmail" placeholder="correo@ejemplo.com">
-                        </div>
-                        
-                        <div class="input-group-form">
-                            <label>Password</label>
-                            <input type="password" id="loginPassword" placeholder="••••••••">
-                        </div>
-                        
-                        <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
-                        
-                        <button class="submit-btn" id="btnLogin">INICIAR SESIÓN</button>
-                        <div id="loginMessage" class="message"></div>
+                <!-- Formulario de Registro -->
+                <div class="form-container register-form" id="registerForm">
+                    <h1>Registrarse</h1>
+                    <p class="subtitulo">Regístrese con sus datos personales para tener acceso a todos los servicios de Computer Technology</p>
+                    
+                    <div class="input-group-form">
+                        <label>Nombre</label>
+                        <input type="text" id="regNombre" placeholder="Tu nombre">
                     </div>
-
-                    <div class="form-container register-form" id="registerFormDesktop">
-                        <h1>Registrarse</h1>
-                        <p class="subtitulo">Regístrese con sus datos personales</p>
-                        
-                        <div class="input-group-form">
-                            <label>Nombre</label>
-                            <input type="text" id="regNombreDesktop" placeholder="Tu nombre">
-                        </div>
-                        
-                        <div class="input-group-form">
-                            <label>Email</label>
-                            <input type="email" id="regEmailDesktop" placeholder="correo@ejemplo.com">
-                        </div>
-                        
-                        <div class="input-group-form">
-                            <label>Password</label>
-                            <input type="password" id="regPasswordDesktop" placeholder="••••••••">
-                        </div>
-                        
-                        <button class="submit-btn" id="btnRegisterDesktop">REGISTRARSE</button>
-                        <div id="registerMessageDesktop" class="message"></div>
+                    
+                    <div class="input-group-form">
+                        <label>Email</label>
+                        <input type="email" id="regEmail" placeholder="correo@ejemplo.com">
                     </div>
+                    
+                    <div class="input-group-form">
+                        <label>Password</label>
+                        <input type="password" id="regPassword" placeholder="••••••••">
+                    </div>
+                    
+                    <button class="submit-btn" id="btnRegister">REGISTRARSE</button>
+                    <div id="registerMessage" class="message"></div>
                 </div>
+            </div>
 
-                <div class="panel info-panel">
-                    <div class="panel-content">
-                        <h2>¡Hola, Amigo!</h2>
-                        <p>Use su correo electrónico para registrarse en la mejor tienda de tecnologia a nivel mundial.</p>
-                        <button id="btnLoginPanel" class="panel-btn">Iniciar Sesión</button>
-                    </div>
+            <!-- Panel de información (se desliza) -->
+            <div class="panel info-panel">
+                <div class="panel-content">
+                    <h2>¡Hola, Amigo!</h2>
+                    <p>Use su correo electrónico para registrarse en la mejor tienda de tecnologia a nivel mundial.</p>
+                    <button id="btnLoginPanel" class="panel-btn">Iniciar Sesión</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Versión para móvil (diseño simplificado) -->
-    <div class="mobile-version">
-        <div class="mobile-card">
-            <div class="mobile-tabs">
-                <button class="tab-btn active" id="mobileLoginTab">Iniciar Sesión</button>
-                <button class="tab-btn" id="mobileRegisterTab">Registrarse</button>
-            </div>
-
-            <!-- Formulario Login Móvil -->
-            <div class="mobile-form" id="mobileLoginForm">
-                <div class="input-group-mobile">
-                    <label>Correo Electrónico</label>
-                    <input type="email" id="mobileEmail" placeholder="tucorreo@ejemplo.com">
-                </div>
-                <div class="input-group-mobile">
-                    <label>Contraseña</label>
-                    <input type="password" id="mobilePassword" placeholder="Tu contraseña">
-                </div>
-                <button class="mobile-submit-btn" id="mobileLoginBtn">Ingresar</button>
-                <div id="mobileLoginMessage" class="message-mobile"></div>
-            </div>
-
-            <!-- Formulario Registro Móvil -->
-            <div class="mobile-form hidden" id="mobileRegisterForm">
-                <div class="input-group-mobile">
-                    <label>Nombre Completo</label>
-                    <input type="text" id="mobileNombre" placeholder="Tu nombre">
-                </div>
-                <div class="input-group-mobile">
-                    <label>Correo Electrónico</label>
-                    <input type="email" id="mobileRegEmail" placeholder="tucorreo@ejemplo.com">
-                </div>
-                <div class="input-group-mobile">
-                    <label>Contraseña</label>
-                    <input type="password" id="mobileRegPassword" placeholder="Crea una contraseña">
-                </div>
-                <button class="mobile-submit-btn" id="mobileRegisterBtn">Crear Cuenta</button>
-                <div id="mobileRegisterMessage" class="message-mobile"></div>
-            </div>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>

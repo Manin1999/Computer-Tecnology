@@ -6,45 +6,40 @@
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #0A192F;
     position: relative;
 }
 
-/* ===== LOGO ===== */
+/* ===== LOGO CONTAINER EN LA PARTE SUPERIOR IZQUIERDA ===== */
 .logo-container {
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.2px;
     z-index: 1000;
-    padding: 15px 20px;
+    padding: 20px 30px;
 }
 
 .logo-img {
-    height: 45px;
+    height: 130px;
     width: auto;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .logo-text {
     color: white;
     font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
 }
 
-/* ===== VERSIÓN ESCRITORIO (por defecto) ===== */
-.desktop-version {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
+/* Contenedor principal */
 .container {
     width: 900px;
     max-width: 90%;
@@ -237,6 +232,7 @@ body {
     display: block;
 }
 
+/* ===== MENSAJES DE ÉXITO Y ERROR ===== */
 .message {
     margin-top: 15px;
     padding: 10px;
@@ -269,160 +265,31 @@ body {
     }
 }
 
-/* ===== VERSIÓN MÓVIL (diseño simplificado) ===== */
-.mobile-version {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.mobile-card {
-    background: white;
-    border-radius: 25px;
-    padding: 30px 25px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    margin-top: 60px;
-}
-
-.mobile-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-    background: #f1f5f9;
-    padding: 5px;
-    border-radius: 50px;
-}
-
-.tab-btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    background: transparent;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-    color: #64748b;
-}
-
-.tab-btn.active {
-    background: linear-gradient(135deg, #0A2B4E, #1A3A5F);
-    color: white;
-    box-shadow: 0 2px 8px rgba(10, 43, 78, 0.3);
-}
-
-.mobile-form {
-    transition: 0.3s;
-}
-
-.mobile-form.hidden {
-    display: none;
-}
-
-.input-group-mobile {
-    margin-bottom: 20px;
-}
-
-.input-group-mobile label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #334155;
-    font-size: 0.85rem;
-}
-
-.input-group-mobile input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 1rem;
-    transition: 0.3s;
-    outline: none;
-    background: #f8fafc;
-}
-
-.input-group-mobile input:focus {
-    border-color: #0A2B4E;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(10, 43, 78, 0.1);
-}
-
-.mobile-submit-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #0A2B4E, #1A3A5F);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
-}
-
-.mobile-submit-btn:active {
-    transform: scale(0.98);
-}
-
-.message-mobile {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-.message-mobile.success {
-    background: #d4edda;
-    color: #155724;
-}
-
-.message-mobile.error {
-    background: #f8d7da;
-    color: #721c24;
-}
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    body {
-        background: linear-gradient(135deg, #0A192F, #1A3A5F);
-    }
-    
-    .logo-img {
-        height: 35px;
-    }
-    
-    .logo-text {
-        font-size: 0.7rem;
-    }
-    
-    .desktop-version {
-        display: none;
-    }
-    
-    .mobile-version {
-        display: flex;
-    }
-}
-
-@media (min-width: 769px) {
-    .logo-img {
-        height: 130px;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-    
     .logo-container {
-        padding: 20px 30px;
-        gap: 10px;
+        padding: 10px 15px;
+        gap: 8px;
+    }
+    
+    .logo-img {
+        height: 70px;
+    }
+    
+    .logo-text {
+        font-size: 0.6rem;
+    }
+    
+    .main-box {
+        flex-direction: column;
+    }
+
+    .info-panel {
+        width: 100%;
+        position: relative;
+        right: 0;
+    }
+
+    .main-box.slide-active .info-panel {
+        right: 0;
     }
 }
