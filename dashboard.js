@@ -1,15 +1,17 @@
-// ===== PRODUCTOS =====
+// ===== PRODUCTOS CON IMÁGENES EN CARPETA RAIZ =====
 const products = [
-    { id: 1, nombre: "Laptop Gaming ASUS ROG", categoria: "laptops", precio: 1299.99, envio: true, imagen: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=300", descripcion: "Intel i7, RTX 4060, 16GB RAM, 1TB SSD" },
-    { id: 2, nombre: "Laptop HP Pavilion", categoria: "laptops", precio: 899.99, envio: true, imagen: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=300", descripcion: "AMD Ryzen 5, 8GB RAM, 512GB SSD" },
-    { id: 3, nombre: "Teclado Mecánico RGB", categoria: "perifericos", precio: 89.99, envio: false, imagen: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300", descripcion: "Switch Blue, iluminación RGB" },
-    { id: 4, nombre: "Mouse Gamer Logitech", categoria: "perifericos", precio: 49.99, envio: true, imagen: "https://images.unsplash.com/photo-1527864550417-7fd91ae51a46?w=300", descripcion: "Sensor 16000 DPI, 6 botones" },
-    { id: 5, nombre: "Monitor Samsung 27''", categoria: "monitores", precio: 349.99, envio: true, imagen: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300", descripcion: "1080p, 144Hz, 1ms" },
-    { id: 6, nombre: "Monitor LG 4K", categoria: "monitores", precio: 449.99, envio: true, imagen: "https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=300", descripcion: "4K UHD, IPS, HDR10" },
-    { id: 7, nombre: "SSD Kingston 1TB", categoria: "almacenamiento", precio: 119.99, envio: false, imagen: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=300", descripcion: "NVMe, lectura 3500MB/s" },
-    { id: 8, nombre: "Disco Duro Externo 2TB", categoria: "almacenamiento", precio: 89.99, envio: true, imagen: "https://images.unsplash.com/photo-1587202372775-e229f172a375?w=300", descripcion: "USB 3.0, portátil" },
-    { id: 9, nombre: "Auriculares HyperX", categoria: "audio", precio: 79.99, envio: true, imagen: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=300", descripcion: "Sonido 7.1, micrófono noise-cancelling" },
-    { id: 10, nombre: "Parlante Bluetooth", categoria: "audio", precio: 59.99, envio: false, imagen: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=300", descripcion: "Portátil, 20W, resistente al agua" }
+    { id: 1, nombre: "Smartwatch T800 IWO Ultra Serie", categoria: "smartwatch", precio: 24.99, envio: true, imagen: "reloj.png", descripcion: "Reloj inteligente serie Ultra" },
+    { id: 2, nombre: "Cable HDMI", categoria: "accesorios", precio: 4.99, envio: false, imagen: "hdmi.png", descripcion: "Cable HDMI compatible 4K" },
+    { id: 3, nombre: "Termo LED Temperatura", categoria: "iluminacion", precio: 7.99, envio: false, imagen: "termo.png", descripcion: "Termo con pantalla LED indicadora" },
+    { id: 4, nombre: "Audífonos B39M Orejas de Gato RGB", categoria: "audio", precio: 11.99, envio: true, imagen: "audifonos de gato.png", descripcion: "Audífonos con luces RGB y forma de orejas de gato" },
+    { id: 5, nombre: "Audífonos Gamer Negro con Micrófono 3.5mm", categoria: "audio", precio: 11.99, envio: true, imagen: "Audífonos Gamer Negro con Micrófono.png", descripcion: "Audífonos con micrófono para PC/Laptop/PS4" },
+    { id: 6, nombre: "Base Soporte para Celular Moto/Bicicleta", categoria: "accesorios", precio: 8.99, envio: false, imagen: "Base Soporte para Celular Moto.png", descripcion: "Sujetador universal para moto y bicicleta" },
+    { id: 7, nombre: "Cautín Punta Cerámica", categoria: "herramientas", precio: 11.99, envio: false, imagen: "Cautín Punta Cerámica.png", descripcion: "Cautín para soldadura profesional" },
+    { id: 8, nombre: "Multímetro Digital", categoria: "herramientas", precio: 11.99, envio: true, imagen: "Multímetro Digital.png", descripcion: "Multímetro para medir voltaje y corriente" },
+    { id: 9, nombre: "Teclado RGB Gamer", categoria: "accesorios", precio: 14.99, envio: true, imagen: "Teclado RGB Gamer.png", descripcion: "Teclado mecánico con iluminación RGB" },
+    { id: 10, nombre: "Cable Tipo C", categoria: "accesorios", precio: 0.99, envio: false, imagen: "Cable Tipo C.png", descripcion: "Cable USB Tipo C carga rápida" },
+    { id: 11, nombre: "Kit de Destornillador Profesional", categoria: "herramientas", precio: 14.99, envio: true, imagen: "Kit de Destornillador Profesional.png", descripcion: "Kit de 60 piezas para reparación" },
+    { id: 12, nombre: "Audífonos Bluetooth F9-TWS", categoria: "audio", precio: 10.99, envio: true, imagen: "Audífonos Bluetooth.png", descripcion: "Audífonos inalámbricos con estuche de carga" }
 ];
 
 let currentUser = JSON.parse(localStorage.getItem('current_user'));
@@ -27,6 +29,12 @@ const welcomeText = document.getElementById('welcomeText');
 if (welcomeText) {
     welcomeText.innerHTML = `${currentUser.nombre}, <strong>bienvenido a Computer Technology</strong> | ¡Envíos gratis en productos seleccionados!`;
 }
+
+// Mostrar info en menú lateral
+const menuUserName = document.getElementById('menuUserName');
+const menuUserEmail = document.getElementById('menuUserEmail');
+if (menuUserName) menuUserName.textContent = currentUser.nombre;
+if (menuUserEmail) menuUserEmail.textContent = currentUser.email;
 
 // ===== FUNCIONES DEL CARRITO =====
 function saveCart() {
@@ -99,29 +107,35 @@ function closeCart() {
     if (overlay) overlay.classList.remove('active');
 }
 
-// ===== FUNCIÓN CHECKOUT (REDIRIGE A PAGOS) =====
+// ===== FUNCIONES DEL MENÚ LATERAL =====
+function openMenu() {
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('menuOverlay');
+    if (menu) menu.classList.add('open');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('menuOverlay');
+    if (menu) menu.classList.remove('open');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ===== FUNCIÓN CHECKOUT =====
 function checkout() {
-    console.log('🛒 Botón Comprar clickeado');
-    console.log('📦 Carrito actual:', cart);
-    
     if (cart.length === 0) {
         showNotification('⚠️ Agrega productos al carrito primero');
         return;
     }
     
-    // Guardar carrito antes de redirigir
     localStorage.setItem('cart_meli', JSON.stringify(cart));
-    console.log('✅ Carrito guardado correctamente');
-    
-    // Cerrar carrito
     closeCart();
-    
-    // Mostrar notificación
     showNotification('🔄 Redirigiendo a métodos de pago...');
     
-    // Redirigir a la página de pagos
     setTimeout(() => {
-        console.log('🔀 Redirigiendo a pagos.html');
         window.location.href = 'pagos.html';
     }, 500);
 }
@@ -172,7 +186,7 @@ function renderProducts() {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-            <img src="${product.imagen}" alt="${product.nombre}" class="product-img">
+            <img src="${product.imagen}" alt="${product.nombre}" class="product-img" loading="lazy" onerror="this.src='https://placehold.co/300x200/0A192F/white?text=Producto'">
             <div class="product-info">
                 <h3 class="product-title">${product.nombre}</h3>
                 <div class="product-price">$${product.precio.toFixed(2)}</div>
@@ -191,7 +205,7 @@ function renderProducts() {
     });
 }
 
-// ===== RENDER CARRITO LATERAL =====
+// ===== RENDER CARRITO =====
 function updateCartUI() {
     const cartBody = document.getElementById('cartBody');
     const cartFooter = document.getElementById('cartFooter');
@@ -215,7 +229,7 @@ function updateCartUI() {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-            <img src="${item.imagen}" class="cart-item-img" alt="${item.nombre}">
+            <img src="${item.imagen}" class="cart-item-img" alt="${item.nombre}" onerror="this.src='https://placehold.co/60x60/0A192F/white?text=?'">
             <div class="cart-item-details">
                 <div class="cart-item-title">${item.nombre}</div>
                 <div class="cart-item-price">$${item.precio.toFixed(2)}</div>
@@ -254,32 +268,48 @@ function performSearch() {
     }
 }
 
+// ===== CERRAR SESIÓN =====
+function logout() {
+    localStorage.removeItem('current_user');
+    window.location.href = 'index.html';
+}
+
 // ===== EVENTOS =====
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Dashboard iniciado');
+    // Menú hamburguesa
+    const menuIcon = document.getElementById('menuIcon');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuChatBtn = document.getElementById('menuChatBtn');
+    const menuLogoutBtn = document.getElementById('menuLogoutBtn');
     
-    // Evento del carrito
+    if (menuIcon) menuIcon.addEventListener('click', openMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+    
+    if (menuChatBtn) {
+        menuChatBtn.addEventListener('click', () => {
+            showNotification('💬 Un agente se conectará contigo en breve');
+            closeMenu();
+        });
+    }
+    
+    if (menuLogoutBtn) menuLogoutBtn.addEventListener('click', logout);
+    
+    // Carrito
     const cartIcon = document.getElementById('cartIcon');
     if (cartIcon) cartIcon.addEventListener('click', toggleCart);
     
-    // Evento cerrar carrito
     const closeCartBtn = document.getElementById('closeCartBtn');
     if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
     
-    // Evento overlay
     const overlay = document.getElementById('overlay');
     if (overlay) overlay.addEventListener('click', closeCart);
     
-    // Evento checkout (IMPORTANTE: Botón Comprar ahora)
     const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', checkout);
-        console.log('✅ Botón Comprar ahora conectado correctamente');
-    } else {
-        console.log('❌ Botón Comprar ahora NO encontrado');
-    }
+    if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
     
-    // Evento búsqueda
+    // Búsqueda
     const searchBtn = document.getElementById('searchBtn');
     if (searchBtn) searchBtn.addEventListener('click', performSearch);
     
@@ -290,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Evento categorías
+    // Categorías
     document.querySelectorAll('.category').forEach(cat => {
         cat.addEventListener('click', () => {
             document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
@@ -300,39 +330,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Evento cerrar sesión
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('current_user');
-            window.location.href = 'index.html';
-        });
-    }
-    
     // Inicializar
     renderProducts();
     updateCartCount();
     updateCartUI();
 });
 
-// Agregar animación para el toast
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeOut {
-        0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-        15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-    }
-    .no-results {
-        text-align: center;
-        padding: 60px;
-        background: white;
-        border-radius: 12px;
-        grid-column: 1/-1;
-    }
-`;
-document.head.appendChild(style);
-
-console.log('✅ Dashboard.js cargado correctamente');
-console.log('📦 Carrito actual:', cart);
+console.log('✅ Dashboard cargado correctamente');
+console.log('📦 Productos disponibles:', products.length);

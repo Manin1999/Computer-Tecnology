@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Computer Technology - Inicio</title>
+    <title>Computer Technology - Tienda Online</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
@@ -11,26 +11,32 @@
     <header class="ml-header">
         <div class="header-top">
             <div class="logo-area">
-                <img src="gta22.png" alt="Logo" class="header-logo">
+                <img src="gta22.png" alt="Logo" class="header-logo" onerror="this.src='https://via.placeholder.com/45x45?text=CT'">
                 <span class="logo-text">Computer <span class="tech">Technology</span></span>
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar productos, marcas y más..." class="search-input">
                 <button id="searchBtn" class="search-btn">🔍</button>
             </div>
-            <div class="cart-icon" id="cartIcon">
-                🛒
-                <span id="cartCount" class="cart-badge">0</span>
+            <div class="header-actions">
+                <div class="cart-icon" id="cartIcon">
+                    🛒
+                    <span id="cartCount" class="cart-badge">0</span>
+                </div>
+                <!-- Menú de tres rayas (hamburguesa) -->
+                <div class="menu-icon" id="menuIcon">
+                    ☰
+                </div>
             </div>
         </div>
         <div class="header-bottom">
             <div class="categories" id="categories">
                 <span class="category active" data-cat="all">Todos</span>
-                <span class="category" data-cat="laptops">💻 Laptops</span>
-                <span class="category" data-cat="perifericos">🎮 Periféricos</span>
-                <span class="category" data-cat="monitores">🖥️ Monitores</span>
-                <span class="category" data-cat="almacenamiento">💾 Almacenamiento</span>
-                <span class="category" data-cat="audio">🎧 Audio</span>
+                <span class="category" data-cat="smartwatch">⌚ Smartwatches</span>
+                <span class="category" data-cat="audio">🎧 Audífonos</span>
+                <span class="category" data-cat="accesorios">🔌 Accesorios</span>
+                <span class="category" data-cat="herramientas">🔧 Herramientas</span>
+                <span class="category" data-cat="iluminacion">💡 Iluminación</span>
             </div>
         </div>
     </header>
@@ -43,6 +49,50 @@
         </div>
     </div>
 
+    <!-- Menú lateral (Soporte y Cerrar Sesión) -->
+    <div id="sideMenu" class="side-menu">
+        <div class="side-menu-header">
+            <h3>Menú</h3>
+            <button class="close-menu" id="closeMenuBtn">✕</button>
+        </div>
+        <div class="side-menu-body">
+            <!-- Información del usuario -->
+            <div class="menu-user-info" id="menuUserInfo">
+                <span class="menu-user-icon">👤</span>
+                <div>
+                    <p class="menu-user-name" id="menuUserName">Usuario</p>
+                    <p class="menu-user-email" id="menuUserEmail">correo@ejemplo.com</p>
+                </div>
+            </div>
+            
+            <!-- Soporte Técnico -->
+            <div class="menu-section">
+                <div class="menu-section-title"> Soporte Técnico</div>
+                <div class="menu-support-numbers">
+                    <a href="tel:+5804163101782" class="menu-support-number">📱 0416-3101782</a>
+                    <a href="tel:+5804161026062" class="menu-support-number">📱 0416-1026062</a>
+                    <div class="menu-support-email">@COMPUTERTECHNOLOGY </div>
+                    <div class="menu-support-hours"> Lun a Vie: 8am - 6pm</div>
+                </div>
+            </div>
+
+            <!-- Chat en línea -->
+            <div class="menu-section">
+                <div class="menu-section-title"> Chat en línea</div>
+                <button class="menu-chat-btn" id="menuChatBtn">Iniciar conversación</button>
+            </div>
+
+            <!-- Cerrar Sesión -->
+            <div class="menu-section">
+                <div class="menu-section-title"> Cuenta</div>
+                <button class="menu-logout-btn" id="menuLogoutBtn">Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay para el menú -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+
     <!-- Productos -->
     <main class="ml-main">
         <div class="products-grid" id="productsGrid">
@@ -50,7 +100,7 @@
         </div>
     </main>
 
-    <!-- Carrito lateral (slide) -->
+    <!-- Carrito lateral -->
     <div id="cartSidebar" class="cart-sidebar">
         <div class="cart-header">
             <h3>Mi Carrito</h3>
@@ -74,16 +124,6 @@
 
     <!-- Overlay para el carrito -->
     <div id="overlay" class="overlay"></div>
-
-    <!-- Modal de compra exitosa -->
-    <div id="successModal" class="modal">
-        <div class="modal-content success-modal">
-            <div class="success-icon">✅</div>
-            <h2>¡Compra realizada con éxito!</h2>
-            <p>Tu pedido está siendo procesado. Recibirás un correo con los detalles.</p>
-            <button class="continue-btn" id="continueBtn">Seguir comprando</button>
-        </div>
-    </div>
 
     <script src="dashboard.js"></script>
 </body>
